@@ -21,9 +21,9 @@ class PersonalInfo extends React.Component {
               onClick={this.props.clearSessionStorage}
             ></img>
           </Link>
-          <div className="personal-info-text">პირადი ინფო</div>
-          <div className="page">1/3</div>
-          <div className="personal-info-line"></div>
+          <div className="header-text">პირადი ინფო</div>
+          <div className="header-page">1/3</div>
+          <div className="header-line"></div>
 
           {/* input fields */}
           <div className="input-field-name">

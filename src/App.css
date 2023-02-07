@@ -112,7 +112,7 @@
   top: 45px;
 }
 
-.personal-info-text {
+.header-text {
   position: absolute;
   width: 179px;
   height: 29px;
@@ -130,7 +130,7 @@
   color: #1a1a1a;
 }
 
-.page {
+.header-page {
   position: absolute;
   width: 29px;
   height: 24px;
@@ -151,7 +151,7 @@
   color: #1a1a1a;
 }
 
-.personal-info-line {
+.header-line {
   position: absolute;
   width: 798px;
   height: 0px;
