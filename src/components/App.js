@@ -247,7 +247,16 @@ class App extends React.Component {
                 />
               }
             />
-            <Route path="/experience" exact element={<Experience />} />
+            <Route
+              path="/experience"
+              exact
+              element={
+                <Experience
+                  // Clear Session Storage
+                  clearSessionStorage={this.clearSessionStorage}
+                />
+              }
+            />
           </Routes>
         </BrowserRouter>
       </div>

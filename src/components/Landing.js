@@ -11,7 +11,7 @@ class Landing extends React.Component {
         <div className="landing-line"></div>
         <Link to="/personalInfo">
           <button className="landing-button">
-            <p className="landing-button-text">რეზიუმეს დამატება</p>
+            <div className="landing-button-text">რეზიუმეს დამატება</div>
           </button>
         </Link>
         <img
