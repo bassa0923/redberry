@@ -21,7 +21,7 @@ class Experience extends React.Component {
                   index
                 )
               }
-              value={this.props.experiences.position}
+              value={this.props.experiences[index].position}
             ></input>
             <div className="position-hint">მინიმუმ 2 სიმბოლო</div>
           </div>
@@ -40,7 +40,7 @@ class Experience extends React.Component {
                   index
                 )
               }
-              value={this.props.experiences.employer}
+              value={this.props.experiences[index].employer}
             ></input>
             <div className="employer-hint">მინიმუმ 2 სიმბოლო</div>
           </div>
@@ -62,7 +62,7 @@ class Experience extends React.Component {
                     index
                   )
                 }
-                value={this.props.experiences.startDate}
+                value={this.props.experiences[index].startDate}
               ></input>
             </div>
             <div className="experience-end-date">
@@ -80,7 +80,7 @@ class Experience extends React.Component {
                     index
                   )
                 }
-                value={this.props.experiences.endDate}
+                value={this.props.experiences[index].endDate}
               ></input>
             </div>
           </div>
@@ -98,7 +98,7 @@ class Experience extends React.Component {
                   index
                 )
               }
-              value={this.props.experiences.description}
+              value={this.props.experiences[index].description}
             ></textarea>
           </div>
           <div className="experience-line"></div>
@@ -107,7 +107,6 @@ class Experience extends React.Component {
     });
   };
   render() {
-    console.log("asdasdasd");
     return (
       <div className="experience">
         <div className="experience-input">

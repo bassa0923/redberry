@@ -41,6 +41,7 @@ class App extends React.Component {
         description: "",
       },
     ],
+    indexOfExperiences: 0,
   };
 
   // Creating Inital State
@@ -64,6 +65,28 @@ class App extends React.Component {
       email,
       mobile,
     });
+
+    // Get Experience
+    let experiences = JSON.parse(window.sessionStorage.getItem("experiences"));
+
+    // If experience exists
+    if (experiences) {
+      this.setState({
+        experiences,
+      });
+    }
+
+    // Get Experience Amount
+    let experienceAmount = JSON.parse(
+      window.sessionStorage.getItem("experienceAmount")
+    );
+
+    // If experienceAmount exists
+    if (experienceAmount) {
+      this.setState({
+        experienceAmount,
+      });
+    }
   }
 
   componentDidUpdate(_prevProps, prevState) {
@@ -72,7 +95,6 @@ class App extends React.Component {
       this.showValidationResult();
     }
 
-    // if state is changed, store at sessionStorage
     if (this.state.name !== prevState.name) {
       window.sessionStorage.setItem("name", JSON.stringify(this.state.name));
     }
@@ -98,6 +120,22 @@ class App extends React.Component {
       window.sessionStorage.setItem(
         "mobile",
         JSON.stringify(this.state.mobile)
+      );
+    }
+
+    // Saving Experience Array of Object At Session Storage!
+    if (this.state.experiences !== prevState.experiences) {
+      window.sessionStorage.setItem(
+        "experiences",
+        JSON.stringify(this.state.experiences)
+      );
+    }
+
+    // Saving Amount Of added experiences
+    if (this.state.experienceAmount !== prevState.experienceAmount) {
+      window.sessionStorage.setItem(
+        "experienceAmount",
+        JSON.stringify(this.state.experienceAmount)
       );
     }
   }
@@ -228,11 +266,11 @@ class App extends React.Component {
   renderAnotherExperience = () => {
     // Add extra experience input field
 
-    // 1) Get state and store in new variable
-    let experienceAmount = this.state.experienceAmount;
-
-    // 2) Add one and push into same variable
-    experienceAmount.push(this.state.experienceAmount.length + 1);
+    // 1) Get state, store in new variable, add 1
+    let experienceAmount = [
+      ...this.state.experienceAmount,
+      this.state.experienceAmount.length + 1,
+    ];
 
     // 3) Update state with same variable
     this.setState({
@@ -240,13 +278,22 @@ class App extends React.Component {
     });
 
     // 4) Update experiences object
-    let experiences = this.state.experiences;
-    experiences.push({
+
+    // 1) create object which i want to add in state
+    let object = {
       position: "",
       employer: "",
       startDate: "",
       endDate: "",
       description: "",
+    };
+
+    // 2) creating copy of existing state and adding new object
+    let experiences = [...this.state.experiences, object];
+
+    // 3) updating state
+    this.setState({
+      experiences,
     });
   };
 
@@ -254,9 +301,9 @@ class App extends React.Component {
     // Save Customer Experience
 
     // 1) Make a copy of existing obj
-    let experiences = this.state.experiences;
+    let experiences = [...this.state.experiences];
 
-    // 2) Get Value from Experience and update state
+    // 2) Get Value from Experience
     if (name.startsWith("experience-input-position")) {
       experiences[index].position = value;
     }
@@ -272,10 +319,19 @@ class App extends React.Component {
     if (name.startsWith("experience-input-description")) {
       experiences[index].description = value;
     }
+
+    // 3) Update State Of Experience And Index
+    this.setState({
+      experiences,
+    });
+    if (index > 0) {
+      this.setState({
+        indexOfExperiences: index,
+      });
+    }
   };
 
   render() {
-    console.log(this.state.experiences);
     return (
       <div>
         <BrowserRouter>
