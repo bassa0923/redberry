@@ -4,9 +4,9 @@ import arrow from "../images/arrow.png";
 
 class Experience extends React.Component {
   renderExperience = () => {
-    return this.props.experience.map((el, ind) => {
+    return this.props.experienceAmount.map((el, index) => {
       return (
-        <div className="inputs" key={this.props.experience[ind]}>
+        <div className="inputs" key={this.props.experienceAmount[index]}>
           {/* input fields */}
           <div className="input-field-position">
             <label className="experience-position">თანამდებობა</label>
@@ -14,6 +14,14 @@ class Experience extends React.Component {
               type="text"
               placeholder="დეველოპერი, დიზაინერი, ა.შ"
               className="experience-input-position"
+              onChange={(e) =>
+                this.props.saveExperience(
+                  e.target.value,
+                  e.target.className,
+                  index
+                )
+              }
+              value={this.props.experiences.position}
             ></input>
             <div className="position-hint">მინიმუმ 2 სიმბოლო</div>
           </div>
@@ -25,6 +33,14 @@ class Experience extends React.Component {
               type="text"
               placeholder="დამსაქმებელი"
               className="experience-input-employer"
+              onChange={(e) =>
+                this.props.saveExperience(
+                  e.target.value,
+                  e.target.className,
+                  index
+                )
+              }
+              value={this.props.experiences.employer}
             ></input>
             <div className="employer-hint">მინიმუმ 2 სიმბოლო</div>
           </div>
@@ -39,6 +55,14 @@ class Experience extends React.Component {
                 type="date"
                 id="start"
                 className="experience-input-start"
+                onChange={(e) =>
+                  this.props.saveExperience(
+                    e.target.value,
+                    e.target.className,
+                    index
+                  )
+                }
+                value={this.props.experiences.startDate}
               ></input>
             </div>
             <div className="experience-end-date">
@@ -49,6 +73,14 @@ class Experience extends React.Component {
                 type="date"
                 id="end"
                 className="experience-input-end"
+                onChange={(e) =>
+                  this.props.saveExperience(
+                    e.target.value,
+                    e.target.className,
+                    index
+                  )
+                }
+                value={this.props.experiences.endDate}
               ></input>
             </div>
           </div>
@@ -59,6 +91,14 @@ class Experience extends React.Component {
               type="text"
               placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
               className="experience-input-description"
+              onChange={(e) =>
+                this.props.saveExperience(
+                  e.target.value,
+                  e.target.className,
+                  index
+                )
+              }
+              value={this.props.experiences.description}
             ></textarea>
           </div>
           <div className="experience-line"></div>
@@ -67,6 +107,7 @@ class Experience extends React.Component {
     });
   };
   render() {
+    console.log("asdasdasd");
     return (
       <div className="experience">
         <div className="experience-input">
