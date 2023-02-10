@@ -3,23 +3,10 @@ import { Link } from "react-router-dom";
 import arrow from "../images/arrow.png";
 
 class Experience extends React.Component {
-  render() {
-    return (
-      <div className="experience">
-        <div className="experience-input">
-          {/* header */}
-          <Link to="/">
-            <img
-              className="back-arrow"
-              src={arrow}
-              alt="arrow"
-              onClick={this.props.clearSessionStorage}
-            ></img>
-          </Link>
-          <div className="header-text">გამოცდილება</div>
-          <div className="header-page">2/3</div>
-          <div className="header-line"></div>
-
+  renderExperience = () => {
+    return this.props.experience.map((el, ind) => {
+      return (
+        <div className="inputs" key={this.props.experience[ind]}>
           {/* input fields */}
           <div className="input-field-position">
             <label className="experience-position">თანამდებობა</label>
@@ -43,25 +30,27 @@ class Experience extends React.Component {
           </div>
 
           {/* input field calendar */}
-          <div className="experience-start-date">
-            <label htmlFor="start" className="experience-start">
-              დაწყების რიცხვი
-            </label>
-            <input
-              type="date"
-              id="start"
-              className="experience-input-start"
-            ></input>
-          </div>
-          <div className="experience-end-date">
-            <label htmlFor="end" className="experience-end">
-              დაწყების რიცხვი
-            </label>
-            <input
-              type="date"
-              id="end"
-              className="experience-input-end"
-            ></input>
+          <div className="experience-calendar">
+            <div className="experience-start-date">
+              <label htmlFor="start" className="experience-start">
+                დაწყების რიცხვი
+              </label>
+              <input
+                type="date"
+                id="start"
+                className="experience-input-start"
+              ></input>
+            </div>
+            <div className="experience-end-date">
+              <label htmlFor="end" className="experience-end">
+                დამთავრების რიცხვი
+              </label>
+              <input
+                type="date"
+                id="end"
+                className="experience-input-end"
+              ></input>
+            </div>
           </div>
           {/* Description */}
           <div className="input-field-description">
@@ -73,19 +62,49 @@ class Experience extends React.Component {
             ></textarea>
           </div>
           <div className="experience-line"></div>
+        </div>
+      );
+    });
+  };
+  render() {
+    return (
+      <div className="experience">
+        <div className="experience-input">
+          {/* header */}
+          <div className="experience-header">
+            <Link to="/">
+              <img
+                className="experience-back-arrow"
+                src={arrow}
+                alt="arrow"
+                onClick={this.props.clearSessionStorage}
+              ></img>
+            </Link>
+            <div className="experience-header-text">გამოცდილება</div>
+            <div className="experience-header-page">2/3</div>
+          </div>
+          <div className="experience-header-line"></div>
+          {this.renderExperience()}
           {/* buttons(AddExperience, GoBack, GoToNextPage,) */}
-          <div>
-            <button className="experience-add">
-              <div className="experience-add-experience">
-                მეტი გამოცდილების დამატება
-              </div>
-            </button>
-            <button className="experience-back">
-              <div className="experience-back-page">უკან</div>
-            </button>
-            <button className="experience-next">
-              <div className="experience-next-page">შემდეგი</div>
-            </button>
+          <div className="button-background">
+            <div className="experience-add">
+              <button
+                className="experience-add-button"
+                onClick={this.props.renderAnotherExperience}
+              >
+                <div className="experience-add-experience">
+                  მეტი გამოცდილების დამატება
+                </div>
+              </button>
+            </div>
+            <div className="experience-buttons">
+              <button className="experience-back">
+                <div className="experience-back-page">უკან</div>
+              </button>
+              <button className="experience-next">
+                <div className="experience-next-page">შემდეგი</div>
+              </button>
+            </div>
           </div>
         </div>
         <div className="experience-resume"></div>

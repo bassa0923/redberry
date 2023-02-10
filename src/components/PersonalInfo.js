@@ -216,7 +216,7 @@ class PersonalInfo extends React.Component {
               className="next-button"
               onClick={(event) => this.handleSubmit(event)}
             >
-              <p className="next">შემდეგი</p>
+              <div className="next">შემდეგი</div>
             </button>
           </Link>
         </div>

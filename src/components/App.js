@@ -27,6 +27,9 @@ class App extends React.Component {
     // handleSubmit
     handleSubmit: false,
     back: false,
+
+    // Add Experience Input Field
+    experience: [1],
   };
 
   // Creating Inital State
@@ -211,6 +214,21 @@ class App extends React.Component {
     this.setState(this.initialState);
   };
 
+  renderAnotherExperience = () => {
+    // Add extra experience input field
+
+    // 1) Get state and store in new variable
+    let experience = this.state.experience;
+
+    // 2) Add one and push into same variable
+    experience.push(this.state.experience.length + 1);
+
+    // 3) Update state with same variable
+    this.setState({
+      experience,
+    });
+  };
+
   render() {
     return (
       <div>
@@ -253,7 +271,8 @@ class App extends React.Component {
               element={
                 <Experience
                   // Clear Session Storage
-                  clearSessionStorage={this.clearSessionStorage}
+                  experience={this.state.experience}
+                  renderAnotherExperience={this.renderAnotherExperience}
                 />
               }
             />

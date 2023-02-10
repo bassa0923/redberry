@@ -710,20 +710,85 @@
   width: 1920px;
   height: 1080px;
   background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
 }
 
 .experience-input {
+  display: flex;
+  flex-direction: column;
   width: 1098px;
   height: 1080px;
+}
+
+.experience-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.experience-back-arrow {
+  width: 40px;
+  height: 40px;
+  margin-left: 48px;
+  margin-top: 45px;
+
+  background: #ffffff;
+  border-radius: 1px;
+}
+
+.experience-header-text {
+  margin-left: 61px;
+  margin-top: 47px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+
+  /* off black */
+
+  color: #1a1a1a;
+}
+
+.experience-header-page {
+  margin-left: 586px;
+  margin-top: 47px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  text-align: right;
+
+  /* off black */
+
+  color: #1a1a1a;
+}
+
+.experience-header-line {
+  margin-left: 150px;
+  width: 798px;
+  height: 0px;
+  left: 150px;
+  top: 88px;
+  margin-bottom: 69px;
+
+  /* off black */
+
+  border: 1px solid #1a1a1a;
 }
 
 .experience-resume {
   position: absolute;
   width: 822px;
-  height: 1080px;
   right: 0px;
   top: 0px;
-  background-color: white;
+  bottom: 0px;
+
+  background: #ffffff;
 }
 
 .input-field-position {
@@ -732,12 +797,6 @@
   align-items: flex-start;
   padding: 8px 24px;
   gap: 8px;
-
-  position: absolute;
-  width: 846px;
-  height: 125px;
-  left: calc(50% - 846px / 2 - 411px);
-  top: 157px;
 }
 
 .experience-position {
@@ -816,12 +875,6 @@
   align-items: flex-start;
   padding: 8px 24px;
   gap: 8px;
-
-  position: absolute;
-  width: 846px;
-  height: 125px;
-  left: calc(50% - 846px / 2 - 411px);
-  top: 294px;
 }
 
 .experience-employer {
@@ -892,18 +945,17 @@
   flex-grow: 0;
 }
 
+.experience-calendar {
+  display: flex;
+  flex-direction: row;
+}
+
 .experience-start-date {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 8px 24px;
   gap: 8px;
-
-  position: absolute;
-  width: 419px;
-  height: 125px;
-  left: calc(50% - 419px / 2 - 624.5px);
-  top: 431px;
 }
 
 .experience-start {
@@ -952,12 +1004,6 @@
   align-items: flex-start;
   padding: 8px 24px;
   gap: 8px;
-
-  position: absolute;
-  width: 419px;
-  height: 93px;
-  left: calc(50% - 419px / 2 - 197.5px);
-  top: 431px;
 }
 
 .experience-end {
@@ -1016,12 +1062,6 @@
   align-items: flex-start;
   padding: 8px 24px;
   gap: 8px;
-
-  position: absolute;
-  width: 846px;
-  height: 168px;
-  left: calc(50% - 846px / 2 - 411px);
-  top: 541px;
 }
 
 .experience-description {
@@ -1087,29 +1127,26 @@
 }
 
 .experience-line {
-  position: absolute;
   width: 798px;
-  height: 0px;
-  left: 149px;
-  top: 759px;
-
   border: 1px solid #c1c1c1;
+
+  margin-top: 58px;
+  margin-left: 25px;
+  margin-bottom: 29px;
 }
 
 .experience-add {
+  margin-left: 151px;
+  margin-top: 45px;
+}
+
+.experience-add-button {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 18px 60px;
   gap: 20px;
-
-  position: absolute;
-  width: 289px;
-  height: 48px;
-  left: calc(50% - 289px / 2 - 666.5px);
-  top: 804px;
-
   background: #62a1eb;
   border-radius: 4px;
   cursor: pointer;
@@ -1136,6 +1173,11 @@
   flex-grow: 0;
 }
 
+.experience-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
 .experience-back {
   display: flex;
   flex-direction: row;
@@ -1144,16 +1186,12 @@
   padding: 18px 60px;
   gap: 20px;
 
-  position: absolute;
-  width: 113px;
-  height: 48px;
-  left: 150px;
-  bottom: 65px;
-
   background: #6b40e3;
   border-radius: 4px;
   border: none;
   cursor: pointer;
+  margin-left: 150px;
+  margin-top: 111px;
 }
 .experience-back-page {
   width: 43px;
@@ -1184,16 +1222,12 @@
   padding: 18px 60px;
   gap: 20px;
 
-  position: absolute;
-  width: 151px;
-  height: 48px;
-  right: 972px;
-  bottom: 65px;
-
   background: #6b40e3;
   border-radius: 4px;
   border: none;
   cursor: pointer;
+  margin-top: 111px;
+  margin-left: 438px;
 }
 .experience-next-page {
   width: 81px;
@@ -1215,4 +1249,15 @@
   flex: none;
   order: 0;
   flex-grow: 0;
+}
+
+.button-background {
+  background: #f9f9f9;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+  padding-left: 126px;
 }
