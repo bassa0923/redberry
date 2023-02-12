@@ -3,17 +3,36 @@ import { Link } from "react-router-dom";
 import arrow from "../images/arrow.png";
 
 class Experience extends React.Component {
+  handleSubmit = (event) => {
+    const validateArray = this.props.validateExperience();
+    this.props.nextPageEducation(validateArray, event);
+  };
+
   renderExperience = () => {
     return this.props.experienceAmount.map((el, index) => {
       return (
         <div className="inputs" key={this.props.experienceAmount[index]}>
           {/* input fields */}
           <div className="input-field-position">
-            <label className="experience-position">თანამდებობა</label>
+            <label
+              className={
+                !this.props.experiencesError[index].positionError
+                  ? "experience-position"
+                  : "experience-position error"
+              }
+            >
+              თანამდებობა
+            </label>
             <input
               type="text"
               placeholder="დეველოპერი, დიზაინერი, ა.შ"
-              className="experience-input-position"
+              className={`experience-input-position ${
+                this.props.handleSubmit
+                  ? !this.props.experiencesError[index].positionError
+                    ? "experience-input-position input-success"
+                    : "experience-input-position input-error"
+                  : ""
+              }`}
               onChange={(e) =>
                 this.props.saveExperience(
                   e.target.value,
@@ -23,12 +42,32 @@ class Experience extends React.Component {
               }
               value={this.props.experiences[index].position}
             ></input>
-            <div className="position-hint">მინიმუმ 2 სიმბოლო</div>
+
+            <div
+              className={
+                !this.props.experiencesError[index].positionError
+                  ? "position-hint"
+                  : "position-hint error"
+              }
+            >
+              მინიმუმ 2 სიმბოლო
+            </div>
+            {this.props.showValidationResultExperience(
+              this.props.experiencesError[index].positionError
+            )}
           </div>
 
           {/* input field employer */}
           <div className="input-field-employer">
-            <label className="experience-employer">დამსაქმებელი</label>
+            <label
+              className={
+                !this.props.experiencesError[index].employerError
+                  ? "experience-employer"
+                  : "experience-employer error"
+              }
+            >
+              დამსაქმებელი
+            </label>
             <input
               type="text"
               placeholder="დამსაქმებელი"
@@ -42,13 +81,31 @@ class Experience extends React.Component {
               }
               value={this.props.experiences[index].employer}
             ></input>
-            <div className="employer-hint">მინიმუმ 2 სიმბოლო</div>
+            <div
+              className={
+                !this.props.experiencesError[index].employerError
+                  ? "employer-hint"
+                  : "employer-hint error"
+              }
+            >
+              მინიმუმ 2 სიმბოლო
+            </div>
+            {this.props.showValidationResultExperience(
+              this.props.experiencesError[index].employerError
+            )}
           </div>
 
           {/* input field calendar */}
           <div className="experience-calendar">
             <div className="experience-start-date">
-              <label htmlFor="start" className="experience-start">
+              <label
+                htmlFor="start"
+                className={
+                  !this.props.experiencesError[index].startDateError
+                    ? "experience-start"
+                    : "experience-start error"
+                }
+              >
                 დაწყების რიცხვი
               </label>
               <input
@@ -66,7 +123,14 @@ class Experience extends React.Component {
               ></input>
             </div>
             <div className="experience-end-date">
-              <label htmlFor="end" className="experience-end">
+              <label
+                htmlFor="end"
+                className={
+                  !this.props.experiencesError[index].endDateError
+                    ? "experience-end"
+                    : "experience-end error"
+                }
+              >
                 დამთავრების რიცხვი
               </label>
               <input
@@ -86,7 +150,15 @@ class Experience extends React.Component {
           </div>
           {/* Description */}
           <div className="input-field-description">
-            <label className="experience-description">აღწერა</label>
+            <label
+              className={
+                !this.props.experiencesError[index].descriptionError
+                  ? "experience-description"
+                  : "experience-description error"
+              }
+            >
+              აღწერა
+            </label>
             <textarea
               type="text"
               placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
@@ -141,9 +213,14 @@ class Experience extends React.Component {
               <button className="experience-back">
                 <div className="experience-back-page">უკან</div>
               </button>
-              <button className="experience-next">
-                <div className="experience-next-page">შემდეგი</div>
-              </button>
+              <Link to="/">
+                <button
+                  className="experience-next"
+                  onClick={(event) => this.handleSubmit(event)}
+                >
+                  <div className="experience-next-page">შემდეგი</div>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -679,30 +679,6 @@
   flex-grow: 0;
 }
 
-.error {
-  color: red;
-}
-
-.input-error {
-  border-color: #ef5050;
-}
-
-.input-success {
-  border-color: #98e37e;
-}
-
-.success-result {
-  position: absolute;
-  right: 80px;
-  top: 53px;
-}
-
-.error-result {
-  position: absolute;
-  right: 40px;
-  top: 53px;
-}
-
 /* Experience Page */
 
 .experience {
@@ -1260,4 +1236,40 @@
   flex-direction: column;
   background: #f9f9f9;
   padding-left: 126px;
+}
+
+.error {
+  color: red;
+}
+
+.input-error {
+  border-color: #ef5050;
+}
+
+.input-success {
+  border-color: #98e37e;
+}
+
+.success-result {
+  position: absolute;
+  right: 80px;
+  top: 53px;
+}
+
+.error-result {
+  position: absolute;
+  right: 40px;
+  top: 53px;
+}
+
+.experience-success-result {
+  position: relative;
+  left: 83.17%;
+  top: 31%;
+}
+
+.experience-error-result {
+  position: relative;
+  left: 83.17%;
+  top: 31%;
 }
