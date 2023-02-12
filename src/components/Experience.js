@@ -213,7 +213,7 @@ class Experience extends React.Component {
               <button className="experience-back">
                 <div className="experience-back-page">უკან</div>
               </button>
-              <Link to="/">
+              <Link to="/education">
                 <button
                   className="experience-next"
                   onClick={(event) => this.handleSubmit(event)}

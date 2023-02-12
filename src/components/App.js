@@ -6,6 +6,7 @@ import "../app.css";
 import errorImage from "../images/error.png";
 import successImage from "../images/success.png";
 import Experience from "./Experience";
+import Education from "./Education";
 
 class App extends React.Component {
   state = {
@@ -52,6 +53,7 @@ class App extends React.Component {
         descriptionError: "",
       },
     ],
+    educationAmount: [1],
   };
 
   // Creating Inital State
@@ -496,6 +498,7 @@ class App extends React.Component {
       );
     }
   };
+
   render() {
     return (
       <div>
@@ -553,6 +556,18 @@ class App extends React.Component {
                   showValidationResultExperience={
                     this.showValidationResultExperience
                   }
+                />
+              }
+            />
+            <Route
+              path="/education"
+              exact
+              element={
+                <Education
+                  // Clear Session Storage
+                  clearSessionStorage={this.clearSessionStorage}
+                  // Education Amount
+                  educationAmount={this.state.educationAmount}
                 />
               }
             />

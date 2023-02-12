@@ -58,7 +58,7 @@ class PersonalInfo extends React.Component {
             >
               მინიმუმ 2 სიმბოლო, ქართული ასოები
             </div>
-            {this.props.showValidationResultExperience(this.props.nameError)}
+            {this.props.showValidationResult(this.props.nameError)}
           </div>
 
           {/* input field lastName */}
