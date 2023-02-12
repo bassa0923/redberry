@@ -54,6 +54,9 @@ class App extends React.Component {
       },
     ],
     educationAmount: [1],
+
+    // Degrees
+    degrees: [],
   };
 
   // Creating Inital State
@@ -112,6 +115,22 @@ class App extends React.Component {
       });
     }
   }
+
+  componentDidMount() {
+    this.getDegreesData();
+  }
+  getDegreesData = async () => {
+    // Get Data from api
+    const degreesRespone = await fetch(
+      "https://resume.redberryinternship.ge/api/degrees"
+    );
+    const degrees = await degreesRespone.json();
+
+    // Store it In State
+    this.setState({
+      degrees,
+    });
+  };
 
   componentDidUpdate(_prevProps, prevState) {
     // Save handlesubmit click number for showing Error or Success message(image)
@@ -500,6 +519,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.state.degrees);
     return (
       <div>
         <BrowserRouter>
