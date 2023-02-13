@@ -155,16 +155,16 @@ class App extends React.Component {
       });
     }
 
-    // let educationError = JSON.parse(
-    //   window.sessionStorage.getItem("educationError")
-    // );
+    let educationError = JSON.parse(
+      window.sessionStorage.getItem("educationError")
+    );
 
-    // // If experiencesErro exist
-    // if (educationError) {
-    //   this.setState({
-    //     educationError,
-    //   });
-    // }
+    // If experiencesErro exist
+    if (educationError) {
+      this.setState({
+        educationError,
+      });
+    }
   }
 
   componentDidMount() {
@@ -256,12 +256,12 @@ class App extends React.Component {
       );
     }
     // Saving education Error Array state At session Storage!
-    // if (this.state.educationError !== prevState.educationError) {
-    //   window.sessionStorage.setItem(
-    //     "educationError",
-    //     JSON.stringify(this.state.educationError)
-    //   );
-    // }
+    if (this.state.educationError !== prevState.educationError) {
+      window.sessionStorage.setItem(
+        "educationError",
+        JSON.stringify(this.state.educationError)
+      );
+    }
   }
 
   saveInfo = (value, name) => {
@@ -659,10 +659,9 @@ class App extends React.Component {
 
     // 1) create object error
     let objectError = {
-      positionError: "",
-      employerError: "",
-      startDateError: "",
-      endDateError: "",
+      instituteError: "",
+      degreeError: "",
+      due_dateError: "",
       descriptionError: "",
     };
 
@@ -769,6 +768,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.state.educationError);
     return (
       <div>
         <BrowserRouter>
