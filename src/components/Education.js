@@ -21,11 +21,17 @@ class Education extends React.Component {
           <div className="input-field-quanity-endDate">
             <div className="input-field-quaity">
               <label className="education-quality">ხარისხი</label>
-              <input
-                type="text"
-                placeholder="აირჩიე ხარისხი"
+              <select
                 className="education-input-quality"
-              ></input>
+                value={this.props.selectedDegree}
+                onChange={this.props.changeValue}
+              >
+                {this.props.degrees.map((degree) => (
+                  <option key={degree.id} value={degree.title}>
+                    {degree.title}
+                  </option>
+                ))}
+              </select>
             </div>
             {/* input field end date */}
             <div className="education-end-date">
@@ -54,48 +60,51 @@ class Education extends React.Component {
     });
   };
   render() {
-    return (
-      <div className="education">
-        <div className="education-input">
-          {/* header */}
-          <div className="education-header">
-            <Link to="/">
-              <img
-                className="education-back-arrow"
-                src={arrow}
-                alt="arrow"
-                onClick={this.props.clearSessionStorage}
-              ></img>
-            </Link>
-            <div className="education-header-text">განათლება</div>
-            <div className="education-header-page">3/3</div>
-          </div>
-          <div className="education-header-line"></div>
-          {this.renderEducation()}
-          {/* buttons(AddExperience, GoBack, GoToNextPage,) */}
-          <div className="button-background">
-            <div className="education-add">
-              <button className="education-add-button">
-                <div className="education-add-education">
-                  სხვა სასწავლებლის დამატება
-                </div>
-              </button>
+    if (this.props.degrees) {
+      return (
+        <div className="education">
+          <div className="education-input">
+            {/* header */}
+            <div className="education-header">
+              <Link to="/">
+                <img
+                  className="education-back-arrow"
+                  src={arrow}
+                  alt="arrow"
+                  onClick={this.props.clearSessionStorage}
+                ></img>
+              </Link>
+              <div className="education-header-text">განათლება</div>
+              <div className="education-header-page">3/3</div>
             </div>
-            <div className="education-buttons">
-              <button className="education-back">
-                <div className="education-back-page">უკან</div>
-              </button>
-              {/* <Link to="/education"> */}
-              <button className="education-next">
-                <div className="education-next-page">დასრულება</div>
-              </button>
-              {/* </Link> */}
+            <div className="education-header-line"></div>
+            {this.renderEducation()}
+            {/* buttons(AddExperience, GoBack, GoToNextPage,) */}
+            <div className="button-background">
+              <div className="education-add">
+                <button className="education-add-button">
+                  <div className="education-add-education">
+                    სხვა სასწავლებლის დამატება
+                  </div>
+                </button>
+              </div>
+              <div className="education-buttons">
+                <button className="education-back">
+                  <div className="education-back-page">უკან</div>
+                </button>
+                {/* <Link to="/education"> */}
+                <button className="education-next">
+                  <div className="education-next-page">დასრულება</div>
+                </button>
+                {/* </Link> */}
+              </div>
             </div>
           </div>
+          <div className="education-resume"></div>
         </div>
-        <div className="experience-resume"></div>
-      </div>
-    );
+      );
+    }
+    return null;
   }
 }
 

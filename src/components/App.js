@@ -57,6 +57,7 @@ class App extends React.Component {
 
     // Degrees
     degrees: [],
+    selectedDegree: false,
   };
 
   // Creating Inital State
@@ -518,6 +519,13 @@ class App extends React.Component {
     }
   };
 
+  changeValue = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      selectedDegree: event.target.value,
+    });
+  };
+
   render() {
     console.log(this.state.degrees);
     return (
@@ -588,6 +596,10 @@ class App extends React.Component {
                   clearSessionStorage={this.clearSessionStorage}
                   // Education Amount
                   educationAmount={this.state.educationAmount}
+                  // Degrees
+                  degrees={this.state.degrees}
+                  selectedDegree={this.state.selectedDegree}
+                  changeValue={this.changeValue}
                 />
               }
             />
