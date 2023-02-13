@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import arrow from "../images/arrow.png";
 
 class Education extends React.Component {
+  handleSubmit = (event) => {
+    const validateArray = this.props.validateEducation();
+    this.props.finishResume(validateArray, event);
+  };
+
   renderEducation = () => {
     return this.props.educationAmount.map((el, index) => {
-      console.log(this.props.education[index].institute);
       return (
         <div className="inputs" key={this.props.educationAmount[index]}>
           {/* input fields */}
@@ -113,7 +117,10 @@ class Education extends React.Component {
             {/* buttons(AddExperience, GoBack, GoToNextPage,) */}
             <div className="button-background">
               <div className="education-add">
-                <button className="education-add-button">
+                <button
+                  className="education-add-button"
+                  onClick={this.props.renderAnotherEducation}
+                >
                   <div className="education-add-education">
                     სხვა სასწავლებლის დამატება
                   </div>
@@ -123,11 +130,14 @@ class Education extends React.Component {
                 <button className="education-back">
                   <div className="education-back-page">უკან</div>
                 </button>
-                {/* <Link to="/education"> */}
-                <button className="education-next">
-                  <div className="education-next-page">დასრულება</div>
-                </button>
-                {/* </Link> */}
+                <Link to="/">
+                  <button
+                    className="education-next"
+                    onClick={(event) => this.handleSubmit(event)}
+                  >
+                    <div className="education-next-page">დასრულება</div>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

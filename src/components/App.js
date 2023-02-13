@@ -53,7 +53,6 @@ class App extends React.Component {
         descriptionError: "",
       },
     ],
-    educationAmount: [1],
 
     // Degrees
     degrees: [],
@@ -67,6 +66,16 @@ class App extends React.Component {
         description: "",
       },
     ],
+    educationError: [
+      {
+        instituteError: "",
+        degreeError: "",
+        due_dateError: "",
+        descriptionError: "",
+      },
+    ],
+    // Amount of Education
+    educationAmount: [1],
   };
 
   // Creating Inital State
@@ -134,6 +143,28 @@ class App extends React.Component {
         education,
       });
     }
+    // Get Education Amount
+    let educationAmount = JSON.parse(
+      window.sessionStorage.getItem("educationAmount")
+    );
+
+    // If educationAmount exists
+    if (educationAmount) {
+      this.setState({
+        educationAmount,
+      });
+    }
+
+    // let educationError = JSON.parse(
+    //   window.sessionStorage.getItem("educationError")
+    // );
+
+    // // If experiencesErro exist
+    // if (educationError) {
+    //   this.setState({
+    //     educationError,
+    //   });
+    // }
   }
 
   componentDidMount() {
@@ -194,7 +225,7 @@ class App extends React.Component {
       );
     }
 
-    // Saving Amount Of added experiences And Updating Index Of Experience in state
+    // Saving Amount Of added experiences
     if (this.state.experienceAmount !== prevState.experienceAmount) {
       window.sessionStorage.setItem(
         "experienceAmount",
@@ -217,6 +248,20 @@ class App extends React.Component {
         JSON.stringify(this.state.education)
       );
     }
+    // Saving Amount Of added education
+    if (this.state.educationAmount !== prevState.educationAmount) {
+      window.sessionStorage.setItem(
+        "educationAmount",
+        JSON.stringify(this.state.educationAmount)
+      );
+    }
+    // Saving education Error Array state At session Storage!
+    // if (this.state.educationError !== prevState.educationError) {
+    //   window.sessionStorage.setItem(
+    //     "educationError",
+    //     JSON.stringify(this.state.educationError)
+    //   );
+    // }
   }
 
   saveInfo = (value, name) => {
@@ -351,12 +396,12 @@ class App extends React.Component {
       this.state.experienceAmount.length + 1,
     ];
 
-    // 3) Update state with same variable
+    // 3) Update state
     this.setState({
       experienceAmount,
     });
 
-    // 4) Update experiences object
+    // Update experiencesError object
 
     // 1) create object which i want to add in state
     let object = {
@@ -547,7 +592,6 @@ class App extends React.Component {
   };
 
   changeValue = (event) => {
-    console.log(event.target.value);
     this.setState({
       selectedDegree: event.target.value,
     });
@@ -579,8 +623,152 @@ class App extends React.Component {
     });
   };
 
+  renderAnotherEducation = () => {
+    // Add extra education input field
+
+    // 1) Get state, store in new variable, add 1
+    let educationAmount = [
+      ...this.state.educationAmount,
+      this.state.educationAmount.length + 1,
+    ];
+
+    // 3) Update state with same variable
+    this.setState({
+      educationAmount,
+    });
+
+    //  Update educationError object
+
+    // 1) create object which i want to add in state
+    let object = {
+      institute: "",
+      degree: "",
+      due_date: "",
+      description: "",
+    };
+
+    // 2) creating copy of existing state and adding new object
+    let education = [...this.state.education, object];
+
+    // 3) updating state
+    this.setState({
+      education,
+    });
+
+    // Update experienceError Object
+
+    // 1) create object error
+    let objectError = {
+      positionError: "",
+      employerError: "",
+      startDateError: "",
+      endDateError: "",
+      descriptionError: "",
+    };
+
+    // 2) Create copy of existing objectError
+    let educationError = [...this.state.educationError, objectError];
+
+    // 3) Update State
+    this.setState({
+      educationError,
+    });
+  };
+  validateEducation = () => {
+    // 1) Create copy of existing Education and educationError in state
+    let educations = [...this.state.education];
+    let educationError = [...this.state.educationError];
+    educations.forEach((education, i) => {
+      // if Error set it to true
+      if (education.institute.length < 2) {
+        educationError[i].instituteError = true;
+      }
+      if (education.degree === "") {
+        educationError[i].degreeError = true;
+      }
+      if (education.due_date === "") {
+        educationError[i].due_dateError = true;
+      }
+      if (education.description === "") {
+        educationError[i].descriptionError = true;
+      }
+
+      // If no error set it to false
+      if (education.institute.length >= 2) {
+        educationError[i].instituteError = false;
+      }
+      if (education.degree) {
+        educationError[i].degreeError = false;
+      }
+      if (education.due_date) {
+        educationError[i].due_dateError = false;
+      }
+      if (education.description) {
+        educationError[i].descriptionError = false;
+      }
+    });
+    this.setState({
+      educationError,
+    });
+    // Return true if there is no Error
+    let result = educationError.map((educationError, i) => {
+      if (
+        !educationError.instituteError &&
+        !educationError.degreeError &&
+        !educationError.due_dateError &&
+        !educationError.descriptionError
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    return result;
+  };
+
+  finishResume = (validateArray, event) => {
+    let education = [...this.state.education];
+    let result = [...validateArray];
+    let validation = false;
+
+    this.setState({
+      handleSubmit: true,
+    });
+    result.forEach((el, i) => {
+      if (el === true) {
+        validation = true;
+        return;
+      }
+    });
+
+    // If there is one array and and there is error Prevent Default!
+    if (validateArray.length === 1 && validateArray[0] === false) {
+      event.preventDefault();
+    }
+    // If there is more than One Array
+    if (validateArray.length > 1) {
+      validateArray.forEach((validationResult, i) => {
+        if (validationResult === true) {
+          return;
+        }
+        if (validation === false) {
+          event.preventDefault();
+        }
+        if (validationResult === false) {
+          if (
+            education[i].position !== "" ||
+            education[i].employer !== "" ||
+            education[i].startDate !== "" ||
+            education[i].endDate !== "" ||
+            education[i].description !== ""
+          )
+            event.preventDefault();
+        }
+      });
+    }
+  };
+
   render() {
-    console.log(this.state.education);
     return (
       <div>
         <BrowserRouter>
@@ -657,6 +845,11 @@ class App extends React.Component {
                   saveEducation={this.saveEducation}
                   // Education
                   education={this.state.education}
+                  // Render another Education
+                  renderAnotherEducation={this.renderAnotherEducation}
+                  // validation of experience
+                  validateEducation={this.validateEducation}
+                  finishResume={this.finishResume}
                 />
               }
             />
