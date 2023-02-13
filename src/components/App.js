@@ -827,6 +827,13 @@ class App extends React.Component {
                   showValidationResults={this.showValidationResults}
                   // Clear session storage
                   clearSessionStorage={this.clearSessionStorage}
+                  // Perosnal info
+                  name={this.state.name}
+                  lastName={this.state.lastName}
+                  image={this.state.image}
+                  generalInfo={this.state.generalInfo}
+                  email={this.state.email}
+                  mobile={this.state.mobile}
                 />
               }
             />
@@ -856,10 +863,37 @@ class App extends React.Component {
                   finishResume={this.finishResume}
                   handleSubmit={this.state.handleSubmit}
                   showValidationResults={this.showValidationResults}
+                  // Personal Info
+                  name={this.state.name}
+                  lastName={this.state.lastName}
+                  image={this.state.image}
+                  generalInfo={this.state.generalInfo}
+                  email={this.state.email}
+                  mobile={this.state.mobile}
+                  experiences={this.state.experiences}
                 />
               }
             />
-            <Route path="/resume" exact element={<Resume />} />
+            <Route
+              path="/resume"
+              exact
+              element={
+                <Resume // Personal Info
+                  name={this.state.name}
+                  lastName={this.state.lastName}
+                  image={this.state.image}
+                  generalInfo={this.state.generalInfo}
+                  email={this.state.email}
+                  mobile={this.state.mobile}
+                  // Experience Info
+                  experiences={this.state.experiences}
+                  // Education Info
+                  education={this.state.education}
+                  // Clear Session Storage
+                  clearSessionStorage={this.clearSessionStorage}
+                />
+              }
+            />
           </Routes>
         </BrowserRouter>
       </div>

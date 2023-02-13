@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import arrow from "../images/arrow.png";
+import mobile from "../images/mobile.png";
+import logo from "../images/cv logo.png";
 
 class Experience extends React.Component {
   handleSubmit = (event) => {
@@ -196,6 +198,73 @@ class Experience extends React.Component {
             <div className="experience-header-page">2/3</div>
           </div>
           <div className="experience-header-line"></div>
+          <div className="experience-resume">
+            {/* <div className="info-resume"></div> */}
+            <div className="info-resume">
+              <div className="resume-name-lastName">
+                <div className="resume-name">{this.props.name}</div>
+                <div className="resume-lastName">{this.props.lastName}</div>
+              </div>
+              <div className="email">
+                <div className="resume-email-at">@</div>
+                <div className="resume-email">{this.props.email}</div>
+              </div>
+              <div className="mobile">
+                <img
+                  className="resume-mobile-image"
+                  alt="mobile logo"
+                  src={mobile}
+                ></img>
+                <div className="resume-mobile">{this.props.mobile}</div>
+              </div>
+
+              <img
+                alt="customer"
+                src={this.props.image}
+                className="resume-image"
+              ></img>
+              <div className="resume-myself">ჩემს შესახებ</div>
+              <div className="resume-general-info">
+                <div>{this.props.generalInfo}</div>
+              </div>
+            </div>
+            <div className="resume-line"></div>
+            <div className="resume-experience">
+              <div className="resume-experiences"></div>
+              <div className="experience-text">გამოცდილება</div>
+              {this.props.experiences.map((experience, index) => {
+                console.log(experience);
+                return (
+                  <div key={index} className="experience-experience">
+                    <div className="resume-position-employer">
+                      <div className="resume-position">
+                        {experience.position}
+                      </div>
+                      <div className="resume-employer">
+                        {experience.employer}
+                      </div>
+                    </div>
+                    <div className="resume-calendar">
+                      <div className="resume-startDate">
+                        {experience.startDate}
+                      </div>
+                      <div className="calendar-seperator">-</div>
+                      <div className="resume-endDate">{experience.endDate}</div>
+                    </div>
+                    <div className="resume-description">
+                      <div>{experience.description}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <img
+              src={logo}
+              alt="resume logo"
+              className="resume-logo-info"
+            ></img>
+          </div>
+
           {this.renderExperience()}
           {/* buttons(AddExperience, GoBack, GoToNextPage,) */}
           <div className="button-background">
@@ -210,9 +279,11 @@ class Experience extends React.Component {
               </button>
             </div>
             <div className="experience-buttons">
-              <button className="experience-back">
-                <div className="experience-back-page">უკან</div>
-              </button>
+              <Link to="/personalInfo">
+                <button className="experience-back">
+                  <div className="experience-back-page">უკან</div>
+                </button>
+              </Link>
               <Link to="/education">
                 <button
                   className="experience-next"
@@ -224,7 +295,6 @@ class Experience extends React.Component {
             </div>
           </div>
         </div>
-        <div className="experience-resume"></div>
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import React from "react";
 import arrow from "../images/arrow.png";
 import { Link } from "react-router-dom";
+import mobile from "../images/mobile.png";
+import logo from "../images/cv logo.png";
 
 class PersonalInfo extends React.Component {
   handleSubmit = (event) => {
@@ -220,7 +222,37 @@ class PersonalInfo extends React.Component {
             </button>
           </Link>
         </div>
-        <div className="personal-info-resume"></div>
+        <div className="personal-info-resume">
+          <div className="info-resume">
+            <div className="resume-name-lastName">
+              <div className="resume-name">{this.props.name}</div>
+              <div className="resume-lastName">{this.props.lastName}</div>
+            </div>
+            <div className="email">
+              <div className="resume-email-at">@</div>
+              <div className="resume-email">{this.props.email}</div>
+            </div>
+            <div className="mobile">
+              <img
+                className="resume-mobile-image"
+                alt="mobile logo"
+                src={mobile}
+              ></img>
+              <div className="resume-mobile">{this.props.mobile}</div>
+            </div>
+
+            <img
+              alt="customer"
+              src={this.props.image}
+              className="resume-image"
+            ></img>
+            <div className="resume-myself">ჩემს შესახებ</div>
+            <div className="resume-general-info">
+              <div>{this.props.generalInfo}</div>
+            </div>
+          </div>
+          <img src={logo} alt="resume logo" className="resume-logo-info"></img>
+        </div>
       </div>
     );
   }

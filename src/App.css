@@ -1724,3 +1724,420 @@
   background: #f9f9f9;
   padding-left: 126px;
 }
+
+.resume-page {
+  position: relative;
+  width: 1920px;
+  height: 1080;
+
+  background: #ffffff;
+}
+
+.resume {
+  box-sizing: border-box;
+  position: absolute;
+  width: 822px;
+
+  left: calc(50% - 822px / 2);
+  top: 54px;
+
+  background: #ffffff;
+  border: 0.8px solid #000000;
+}
+
+.resume-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 80px;
+  margin-top: 68px;
+}
+
+.resume-name-lastName {
+  display: flex;
+  flex-direction: row;
+}
+
+.resume-name {
+  width: 123px;
+  height: 42px;
+  margin-right: -40px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 42px;
+  /* identical to box height */
+
+  color: #f93b1d;
+}
+
+.resume-lastName {
+  width: 166px;
+  height: 42px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 42px;
+  /* identical to box height */
+
+  color: #f93b1d;
+}
+
+.resume-email {
+  margin-top: 17px;
+  width: 187px;
+  height: 21px;
+  left: 111px;
+  top: 127px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+
+  /* off black */
+
+  color: #1a1a1a;
+}
+
+.resume-mobile {
+  margin-top: 10px;
+  width: 151px;
+  height: 21px;
+  left: 111px;
+  top: 158px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+
+  /* off black */
+
+  color: #1a1a1a;
+}
+
+.resume-myself {
+  margin-top: 34px;
+  width: 118px;
+  height: 22px;
+  left: 80px;
+  top: 213px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #f93b1d;
+}
+
+.resume-general-info {
+  margin-top: 15px;
+  width: 432px;
+  left: 80px;
+  top: 250px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  /* or 138% */
+
+  text-transform: lowercase;
+  color: #000000;
+}
+
+.resume-image {
+  position: absolute;
+  width: 246px;
+  height: 246px;
+  left: 501px;
+  top: 48px;
+  border-radius: 133px;
+}
+
+.resume-line {
+  width: 662px;
+  right: 80px;
+  top: 341px;
+
+  border: 1px solid #c8c8c8;
+  margin-top: 19px;
+  margin-bottom: 24px;
+  margin-left: 80px;
+}
+
+.resume-experience {
+  margin-left: 80px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.resume-experiences {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-text {
+  width: 143px;
+  height: 22px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #f93b1d;
+}
+
+.experience-experience {
+  margin-top: 15px;
+}
+
+.resume-position-employer {
+  display: flex;
+  flex-direction: row;
+}
+
+.resume-employer {
+  margin-left: 7px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  /* off black */
+
+  color: #1a1a1a;
+}
+.resume-position {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  /* off black */
+
+  color: #1a1a1a;
+  margin-bottom: 7px;
+}
+.resume-calendar {
+  display: flex;
+  flex-direction: row;
+}
+.resume-startDate {
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #919191;
+}
+.calendar-seperator {
+  margin-top: -2px;
+  color: #919191;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.resume-endDate {
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #919191;
+}
+
+.resume-description {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  /* or 138% */
+
+  text-transform: capitalize;
+
+  color: #000000;
+  margin-top: 16px;
+}
+
+.resume-line-experience {
+  width: 662px;
+  border: 1px solid #c8c8c8;
+  margin-top: 32px;
+}
+
+.education-text {
+  width: 115px;
+  height: 22px;
+  left: 80px;
+  top: 588px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #f93b1d;
+  margin-top: 26px;
+}
+
+.resume-description-education {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  /* or 138% */
+
+  text-transform: lowercase;
+
+  color: #000000;
+}
+
+.education-education {
+  margin-top: 15px;
+}
+
+.resume-institute-dueDate {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  /* off black */
+
+  color: #1a1a1a;
+}
+
+.resume-degree {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  /* off black */
+
+  color: #1a1a1a;
+  margin-left: 7px;
+}
+
+.resume-due_date {
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #919191;
+  margin-top: 7px;
+}
+
+.resume-description-education {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  /* or 138% */
+
+  text-transform: capitalize;
+
+  color: #000000;
+  margin-top: 15px;
+}
+
+.resume-back {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 48px;
+  top: 45px;
+  background: #f9f9f9;
+}
+
+.resume-back-arrow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 48px;
+  top: 45px;
+  background: #f9f9f9;
+}
+
+.resume-logo {
+  margin-top: 219px;
+  margin-left: 78px;
+}
+
+.email {
+  display: flex;
+  flex-direction: row;
+}
+
+.resume-email-at {
+  margin-top: 17px;
+  margin-right: 11.67px;
+  color: #898989;
+}
+
+.mobile {
+  display: flex;
+  flex-direction: row;
+}
+
+.resume-mobile-image {
+  margin-right: 6.67px;
+}
+
+.info-resume {
+  margin-top: 68px;
+  padding-left: 82px;
+}
+
+.education-resume {
+  position: absolute;
+  width: 822px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+
+  background: #ffffff;
+}
+
+.resume-logo-info {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  left: 78px;
+  top: 994px;
+}
