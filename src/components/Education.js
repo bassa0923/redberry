@@ -196,7 +196,7 @@ class Education extends React.Component {
                 <button className="education-back">
                   <div className="education-back-page">უკან</div>
                 </button>
-                <Link to="/">
+                <Link to="/resume">
                   <button
                     className="education-next"
                     onClick={(event) => this.handleSubmit(event)}

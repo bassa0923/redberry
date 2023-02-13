@@ -7,6 +7,7 @@ import errorImage from "../images/error.png";
 import successImage from "../images/success.png";
 import Experience from "./Experience";
 import Education from "./Education";
+import Resume from "./Resume";
 
 class App extends React.Component {
   state = {
@@ -858,6 +859,7 @@ class App extends React.Component {
                 />
               }
             />
+            <Route path="/resume" exact element={<Resume />} />
           </Routes>
         </BrowserRouter>
       </div>
