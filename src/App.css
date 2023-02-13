@@ -1615,30 +1615,6 @@
   gap: 8px;
 }
 
-.input-field-description {
-  width: 798px;
-  height: 21px;
-
-  font-family: "Helvetica Neue";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 21px;
-  /* identical to box height, or 131% */
-
-  display: flex;
-  align-items: center;
-
-  color: #000000;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
 .education-input-description {
   resize: none;
   box-sizing: border-box;
@@ -1658,6 +1634,25 @@
   order: 1;
   align-self: stretch;
   flex-grow: 1;
+}
+.education-description {
+  width: 798px;
+  height: 21px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .education-input-description::placeholder {
@@ -1717,7 +1712,7 @@
 
 .experience-error-result {
   position: relative;
-  left: 83.17%;
+  left: 87.17%;
   top: 31%;
 }
 .button-background {

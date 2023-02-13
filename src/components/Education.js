@@ -14,11 +14,25 @@ class Education extends React.Component {
         <div className="inputs" key={this.props.educationAmount[index]}>
           {/* input fields */}
           <div className="input-field-place">
-            <label className="education-place">სასწავლებელი</label>
+            <label
+              className={
+                !this.props.educationError[index].instituteError
+                  ? "education-place"
+                  : "education-place error"
+              }
+            >
+              სასწავლებელი
+            </label>
             <input
               type="text"
               placeholder="სასწავლებელი"
-              className="education-input-place"
+              className={`education-input-place ${
+                this.props.handleSubmit
+                  ? !this.props.educationError[index].instituteError
+                    ? "education-input-place input-success"
+                    : "education-input-place input-error"
+                  : ""
+              }`}
               onChange={(e) =>
                 this.props.saveEducation(
                   e.target.value,
@@ -28,14 +42,39 @@ class Education extends React.Component {
               }
               value={this.props.education[index].institute}
             ></input>
-            <div className="place-hint">მინიმუმ 2 სიმბოლო</div>
+            <div
+              className={
+                !this.props.educationError[index].instituteError
+                  ? "place-hint"
+                  : "place-hint error"
+              }
+            >
+              მინიმუმ 2 სიმბოლო
+            </div>
+            {this.props.showValidationResults(
+              this.props.educationError[index].instituteError
+            )}
           </div>
           {/* input field degree */}
           <div className="input-field-degree-endDate">
             <div className="input-field-degree">
-              <label className="education-degree">ხარისხი</label>
+              <label
+                className={
+                  !this.props.educationError[index].degreeError
+                    ? "education-degree"
+                    : "education-degree error"
+                }
+              >
+                ხარისხი
+              </label>
               <select
-                className="education-input-degree"
+                className={`education-input-degree ${
+                  this.props.handleSubmit
+                    ? !this.props.educationError[index].degreeError
+                      ? "education-input-degree input-success"
+                      : "education-input-degree input-error"
+                    : ""
+                }`}
                 value={this.props.education[index].degree}
                 onChange={(e) =>
                   this.props.saveEducation(
@@ -54,13 +93,26 @@ class Education extends React.Component {
             </div>
             {/* input field end date */}
             <div className="education-end-date">
-              <label htmlFor="end" className="education-end">
+              <label
+                htmlFor="end"
+                className={
+                  !this.props.educationError[index].due_dateError
+                    ? "education-end"
+                    : "education-end error"
+                }
+              >
                 დამთავრების რიცხვი
               </label>
               <input
                 type="date"
                 id="end"
-                className="education-input-end"
+                className={`education-input-end ${
+                  this.props.handleSubmit
+                    ? !this.props.educationError[index].due_dateError
+                      ? "education-input-end input-success"
+                      : "education-input-end input-error"
+                    : ""
+                }`}
                 onChange={(e) =>
                   this.props.saveEducation(
                     e.target.value,
@@ -74,11 +126,25 @@ class Education extends React.Component {
           </div>
           {/* input field description */}
           <div className="input-field-description-education">
-            <label className="education-description">აღწერა</label>
+            <label
+              className={
+                !this.props.educationError[index].descriptionError
+                  ? "education-description"
+                  : "education-description error"
+              }
+            >
+              აღწერა
+            </label>
             <textarea
               type="text"
               placeholder="განათლების აღწერა"
-              className="education-input-description"
+              className={`education-input-description ${
+                this.props.handleSubmit
+                  ? !this.props.educationError[index].descriptionError
+                    ? "education-input-description input-success"
+                    : "education-input-description input-error"
+                  : ""
+              }`}
               onChange={(e) =>
                 this.props.saveEducation(
                   e.target.value,

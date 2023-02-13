@@ -52,7 +52,7 @@ class Experience extends React.Component {
             >
               მინიმუმ 2 სიმბოლო
             </div>
-            {this.props.showValidationResultExperience(
+            {this.props.showValidationResults(
               this.props.experiencesError[index].positionError
             )}
           </div>
@@ -90,7 +90,7 @@ class Experience extends React.Component {
             >
               მინიმუმ 2 სიმბოლო
             </div>
-            {this.props.showValidationResultExperience(
+            {this.props.showValidationResults(
               this.props.experiencesError[index].employerError
             )}
           </div>

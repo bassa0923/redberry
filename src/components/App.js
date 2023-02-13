@@ -570,7 +570,7 @@ class App extends React.Component {
     }
   };
 
-  showValidationResultExperience = (error) => {
+  showValidationResults = (error) => {
     if (this.state.handleSubmit) {
       if (error) {
         return (
@@ -733,6 +733,8 @@ class App extends React.Component {
     this.setState({
       handleSubmit: true,
     });
+
+    console.log(result);
     result.forEach((el, i) => {
       if (el === true) {
         validation = true;
@@ -755,10 +757,9 @@ class App extends React.Component {
         }
         if (validationResult === false) {
           if (
-            education[i].position !== "" ||
-            education[i].employer !== "" ||
-            education[i].startDate !== "" ||
-            education[i].endDate !== "" ||
+            education[i].institute !== "" ||
+            education[i].degree !== "" ||
+            education[i].due_date !== "" ||
             education[i].description !== ""
           )
             event.preventDefault();
@@ -822,9 +823,9 @@ class App extends React.Component {
                   nextPageEducation={this.nextPageEducation}
                   // Handle Submit
                   handleSubmit={this.state.handleSubmit}
-                  showValidationResultExperience={
-                    this.showValidationResultExperience
-                  }
+                  showValidationResults={this.showValidationResults}
+                  // Clear session storage
+                  clearSessionStorage={this.clearSessionStorage}
                 />
               }
             />
@@ -845,11 +846,15 @@ class App extends React.Component {
                   saveEducation={this.saveEducation}
                   // Education
                   education={this.state.education}
+                  // Education Error
+                  educationError={this.state.educationError}
                   // Render another Education
                   renderAnotherEducation={this.renderAnotherEducation}
                   // validation of experience
                   validateEducation={this.validateEducation}
                   finishResume={this.finishResume}
+                  handleSubmit={this.state.handleSubmit}
+                  showValidationResults={this.showValidationResults}
                 />
               }
             />
