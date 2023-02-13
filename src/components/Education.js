@@ -215,7 +215,6 @@ class Education extends React.Component {
                 <div className="resume-experiences"></div>
                 <div className="experience-text">გამოცდილება</div>
                 {this.props.experiences.map((experience, index) => {
-                  console.log(experience);
                   return (
                     <div key={index} className="experience-experience">
                       <div className="resume-position-employer">

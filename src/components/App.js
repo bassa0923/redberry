@@ -735,7 +735,6 @@ class App extends React.Component {
       handleSubmit: true,
     });
 
-    console.log(result);
     result.forEach((el, i) => {
       if (el === true) {
         validation = true;
@@ -750,7 +749,9 @@ class App extends React.Component {
     // If there is more than One Array
     if (validateArray.length > 1) {
       validateArray.forEach((validationResult, i) => {
+        console.log(validationResult);
         if (validationResult === true) {
+          this.sendDataToApi();
           return;
         }
         if (validation === false) {
@@ -764,13 +765,42 @@ class App extends React.Component {
             education[i].description !== ""
           )
             event.preventDefault();
+        } else {
+          console.log("siuuu");
         }
       });
     }
   };
 
+  sendDataToApi = () => {
+    const data = {
+      name: this.state.name,
+      surname: this.state.lastName,
+      email: this.state.email,
+      phone_number: this.state.mobile,
+      experiences: this.state.experiences,
+      educations: this.state.education,
+      image: this.state.image,
+      about_me: this.state.generalInfo,
+    };
+
+    fetch("https://resume.redberryinternship.ge/api/cvs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   render() {
-    console.log(this.state.educationError);
     return (
       <div>
         <BrowserRouter>
