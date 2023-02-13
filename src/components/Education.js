@@ -5,6 +5,7 @@ import arrow from "../images/arrow.png";
 class Education extends React.Component {
   renderEducation = () => {
     return this.props.educationAmount.map((el, index) => {
+      console.log(this.props.education[index].institute);
       return (
         <div className="inputs" key={this.props.educationAmount[index]}>
           {/* input fields */}
@@ -14,17 +15,31 @@ class Education extends React.Component {
               type="text"
               placeholder="სასწავლებელი"
               className="education-input-place"
+              onChange={(e) =>
+                this.props.saveEducation(
+                  e.target.value,
+                  e.target.className,
+                  index
+                )
+              }
+              value={this.props.education[index].institute}
             ></input>
             <div className="place-hint">მინიმუმ 2 სიმბოლო</div>
           </div>
-          {/* input field quality */}
-          <div className="input-field-quanity-endDate">
-            <div className="input-field-quaity">
-              <label className="education-quality">ხარისხი</label>
+          {/* input field degree */}
+          <div className="input-field-degree-endDate">
+            <div className="input-field-degree">
+              <label className="education-degree">ხარისხი</label>
               <select
-                className="education-input-quality"
-                value={this.props.selectedDegree}
-                onChange={this.props.changeValue}
+                className="education-input-degree"
+                value={this.props.education[index].degree}
+                onChange={(e) =>
+                  this.props.saveEducation(
+                    e.target.value,
+                    e.target.className,
+                    index
+                  )
+                }
               >
                 {this.props.degrees.map((degree) => (
                   <option key={degree.id} value={degree.title}>
@@ -41,7 +56,15 @@ class Education extends React.Component {
               <input
                 type="date"
                 id="end"
-                className="experience-input-end"
+                className="education-input-end"
+                onChange={(e) =>
+                  this.props.saveEducation(
+                    e.target.value,
+                    e.target.className,
+                    index
+                  )
+                }
+                value={this.props.education[index].due_date}
               ></input>
             </div>
           </div>
@@ -52,6 +75,14 @@ class Education extends React.Component {
               type="text"
               placeholder="განათლების აღწერა"
               className="education-input-description"
+              onChange={(e) =>
+                this.props.saveEducation(
+                  e.target.value,
+                  e.target.className,
+                  index
+                )
+              }
+              value={this.props.education[index].description}
             ></textarea>
           </div>
           <div className="education-line"></div>

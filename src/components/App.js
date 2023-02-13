@@ -58,6 +58,15 @@ class App extends React.Component {
     // Degrees
     degrees: [],
     selectedDegree: false,
+    // Education
+    education: [
+      {
+        institute: "",
+        degree: "",
+        due_date: "",
+        description: "",
+      },
+    ],
   };
 
   // Creating Inital State
@@ -113,6 +122,16 @@ class App extends React.Component {
     if (experiencesError) {
       this.setState({
         experiencesError,
+      });
+    }
+
+    // Get Education
+    let education = JSON.parse(window.sessionStorage.getItem("education"));
+
+    // If education exists save it at state
+    if (education) {
+      this.setState({
+        education,
       });
     }
   }
@@ -188,6 +207,14 @@ class App extends React.Component {
       window.sessionStorage.setItem(
         "experiencesError",
         JSON.stringify(this.state.experiencesError)
+      );
+    }
+
+    // Saving Education Array of Object at session Storage!
+    if (this.state.education !== prevState.education) {
+      window.sessionStorage.setItem(
+        "education",
+        JSON.stringify(this.state.education)
       );
     }
   }
@@ -526,8 +553,34 @@ class App extends React.Component {
     });
   };
 
+  saveEducation = (value, name, index) => {
+    // Save Customer Education
+
+    // 1) Make a copy of existing obj
+    let education = [...this.state.education];
+
+    // 2) Get Value from Experience
+    if (name.startsWith("education-input-place")) {
+      education[index].institute = value;
+    }
+    if (name.startsWith("education-input-degree")) {
+      education[index].degree = value;
+    }
+    if (name.startsWith("education-input-end")) {
+      education[index].due_date = value;
+    }
+    if (name.startsWith("education-input-description")) {
+      education[index].description = value;
+    }
+
+    // 3) Update State Of Experience And Index
+    this.setState({
+      education,
+    });
+  };
+
   render() {
-    console.log(this.state.degrees);
+    console.log(this.state.education);
     return (
       <div>
         <BrowserRouter>
@@ -600,6 +653,10 @@ class App extends React.Component {
                   degrees={this.state.degrees}
                   selectedDegree={this.state.selectedDegree}
                   changeValue={this.changeValue}
+                  // Save Changes in input field
+                  saveEducation={this.saveEducation}
+                  // Education
+                  education={this.state.education}
                 />
               }
             />
